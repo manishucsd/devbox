@@ -3,7 +3,7 @@ set -euo pipefail
 
 if [[ $# -lt 1 ]]; then
   echo "Usage: $0 <GPU_ID> [interval_sec=1] [outfile='-']" >&2
-  exit 1
+  return
 fi
 
 GPU_ID="$1"                # required, e.g. 0
