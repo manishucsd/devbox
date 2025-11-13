@@ -13,6 +13,7 @@ export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 # SELECT WORKSPACE
 WORKSPACE=$HOME
 
+
 # SELECT REPOSITORIES
 REPOS=$WORKSPACE/repos
 
@@ -25,11 +26,14 @@ CUDA=$SDK/cuda
 # CUDA toolkits
 CUDA_12_8_0=$CUDA/12.8.0
 
+
 # Select one version of CUDA toolkit
 CUDA_CURRENT=$CUDA_12_8_0
 
+
 # Derived environment variables
 export CUDACXX=$CUDA_CURRENT/bin/nvcc
+
 
 # ADD CUDA_CURRENT TO PATH and LD_LIBRARY_PATH
 export PATH="$CUDA_CURRENT/bin:$PATH"
@@ -42,6 +46,9 @@ export LD_LIBRARY_PATH="$CUDA_CURRENT/lib64:$LD_LIBRARY_PATH"
 # General Bash/Shell 
 alias cls='clear'
 
+# NVIDIA
+alias nsmi='nvidia-smi'
+
 # Task command aliases
 alias t='task'                                   # shorthand for `task`
 alias tl='task --list'                           # list tasks
@@ -51,7 +58,8 @@ alias pos='poetry shell'                         # open Poetry virtualenv
 alias pod='deactivate'                           # deactivate  
 
 # Git command shortcuts
-alias gs='git status -sb'                        # short, concise status
+alias gss='git status -sb'                       # short, concise status
+alias gs='git status'                            # status
 alias ga='git add'                               # add files
 alias gaa='git add -A'                           # add all changes
 alias gb='git branch'                            # list branches
@@ -81,8 +89,10 @@ tocutlassbuild() {
  cd $REPOS/cutlass/cutlass_tree_$1/build
 }
 
-
+#
 # Python environment setup
+#
+
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - bash)"
